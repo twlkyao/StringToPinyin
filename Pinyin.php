@@ -6949,7 +6949,7 @@
 		$result="";
 		$charArray=str_split_php5_utf8($keyWord);
 		foreach($charArray as $char){
-		if(!empty($hz[$char])){
+		if(isset($hz[$char])){
 			$result= $result.$hz[$char];
 		}
 		else
@@ -6961,6 +6961,10 @@
 	}
 	
 	function str_split_php5_utf8($str) { 
+	    
+	 // 首先统一字符串为utf-8编码
+	 $str = mb_convert_encoding($str, "utf-8", "auto");
+	 
     // place each character of the string into and array 
     $split=1; 
     $array = array(); 
